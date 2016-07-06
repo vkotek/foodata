@@ -16,13 +16,18 @@
 
 <body>
 	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+	
+	<div id="wrapper">
 
-	{include content}
+        {include content}
 
-	{block scripts}
-	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
-	<script src="{$basePath}/js/main.js"></script>
-	{/block}
+        {block scripts}
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+        <script src="{$basePath}/js/main.js"></script>
+        {/block}
+        
+    </div>
+    
 </body>
 </html>

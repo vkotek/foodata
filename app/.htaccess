@@ -1,2 +1,3 @@
+mod_rewrite enabled
 Order Allow,Deny
 Deny from all
