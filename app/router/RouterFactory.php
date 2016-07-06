@@ -9,7 +9,6 @@ use Nette\Application\Routers\Route;
 
 class RouterFactory
 {
-	use Nette\StaticClass;
 
 	/**
 	 * @return Nette\Application\IRouter

@@ -7,10 +7,8 @@ use Nette\Application\Responses;
 use Tracy\ILogger;
 
 
-class ErrorPresenter implements Nette\Application\IPresenter
+class ErrorPresenter extends Nette\Object implements Nette\Application\IPresenter
 {
-	use Nette\SmartObject;
-
 	/** @var ILogger */
 	private $logger;
 
@@ -30,8 +28,8 @@ class ErrorPresenter implements Nette\Application\IPresenter
 
 		if ($e instanceof Nette\Application\BadRequestException) {
 			// $this->logger->log("HTTP code {$e->getCode()}: {$e->getMessage()} in {$e->getFile()}:{$e->getLine()}", 'access');
-			list($module, , $sep) = Nette\Application\Helpers::splitName($request->getPresenterName());
-			return new Responses\ForwardResponse($request->setPresenterName($module . $sep . 'Error4xx'));
+			$module = substr($request->getPresenterName(), 0, strrpos($request->getPresenterName(), ':'));
+			return new Responses\ForwardResponse($request->setPresenterName($module . ($module ? ':' : '') . 'Error4xx'));
 		}
 
 		$this->logger->log($e, ILogger::EXCEPTION);

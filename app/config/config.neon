@@ -5,6 +5,10 @@
 parameters:
 
 
+php:
+	date.timezone: Europe/Prague
+
+
 application:
 	errorPresenter: Error
 	mapping:
@@ -18,6 +22,5 @@ session:
 services:
 	- App\Model\UserManager
 	- App\Forms\FormFactory
-	- App\Forms\SignInFormFactory
-	- App\Forms\SignUpFormFactory
+	- App\Forms\SignFormFactory
 	router: App\RouterFactory::createRouter
